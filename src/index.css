@@ -21,4 +21,9 @@ body,html{
 a{
   color:inherit;
 }
-
+#root{
+  min-height: 100vh;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+}

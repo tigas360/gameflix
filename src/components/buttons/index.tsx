@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 
 interface LinkButtonProps{
     title?:string,
-    link?:string
+    link:string,
+    style?:CSSProperties,
+    className?: string;
 }
 
+
 const LinkButton:React.FC<LinkButtonProps> = (props) =>{
+
+    // let getCssClass=()=>{
+    //     return props.className;
+    // }
     return(
-        <a href={props.link} className="LinkButton">
+        <Link to={props.link} className={props.className||"LinkButton"}  style={props.style}>
             {props.title}
-        </a>
+        </Link>
     );
 }
 export default LinkButton;

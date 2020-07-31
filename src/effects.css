@@ -1,0 +1,75 @@
+.box-outer{
+    overflow:hidden;
+    /*margin: 5px auto;
+    width: 200px;*/
+}
+
+.main-box {
+    position: relative;
+    background-color: #f34c4c;
+    border: 5x solid whitesmoke;
+    height: fit-content;
+    width: fit-content;
+    padding: 0px;
+    overflow: hidden;
+}
+/*moving bars*/
+.bar {
+    position: absolute;
+    width: 50px;
+    height: 5px;
+    background: #fff;
+    transition: all 1s linear;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+.delay {
+    animation-delay: 1.5s;
+}
+
+.top {
+    top: 0px;
+    right: -5px;
+}
+
+.bottom {
+    bottom: 0px;
+    left: -5px;
+}
+.right {
+    top: -200px;
+    right: -23px;
+    transform: rotate(90deg);
+}
+.left {
+    top: -200px;
+    left: -23px;
+    transform: rotate(90deg);
+}
+@keyframes h-move {
+    0%{
+        left: -50px;
+    }
+    100% {
+        left: 100px;
+    }
+}
+
+@keyframes v-move {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top:80px;
+    }
+}
+
+.top, .bottom {
+    animation-name: h-move;
+}
+.right, .left {
+    animation-name: v-move;
+}
+
