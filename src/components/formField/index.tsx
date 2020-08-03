@@ -1,4 +1,7 @@
-import React, { InputHTMLAttributes } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
+import './formField.css';
 
 interface inputForm{
     label:string,
@@ -11,16 +14,23 @@ interface inputForm{
 }
 const FormField:React.FC<inputForm>=(props)=> {
 
-    function _type(props:any){
-        if(props.type !== "textarea")
+    const _type=(props:any)=>{
+        const isTextArea = (props.type === "textarea");
+        const tag = isTextArea?"input":"textarea";
+
+        //if(props.type !== "textarea")
+        if(!isTextArea)
         {
             return(
-                    <label>{props.label}
-                        <input type={props.type} 
-                            name={props.name}
-                            onChange={props.onChange}
-                            value={props.value} />
-                    </label>
+                    <div className="form-field">
+                            <input placeholder= ''
+                                type={props.type} 
+                                name={props.name}
+                                onChange={props.onChange}
+                                value={props.value}
+                                required />
+                            <label>{props.label}</label>
+                    </div>
             );
         }
         else
@@ -28,6 +38,8 @@ const FormField:React.FC<inputForm>=(props)=> {
             return(
                 <label>{props.label}
                     <textarea 
+                    placeholder=" "
+                    required 
                     rows={props.rows} 
                     maxLength={props.maxLength} 
                     name={props.name} 

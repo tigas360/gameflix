@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import PageDefault1 from '../templates/PageDefault1';
 import FormField from '../../components/formField';
 
-const Cadastro: React.FC<{}> = (props) =>{
+const Cadastro: React.FC = () =>{
    
     const categoryData ={
         name:'',
@@ -24,13 +25,11 @@ const Cadastro: React.FC<{}> = (props) =>{
     //+---------------------------------------------
     //| captura a event de mudança do input
     //+---------------------------------------------    
-    function handleOnChange(event:any){
-        let target = event.target;
-        let name = target.name;
-        let value = target.value;
+    function handleOnChange(event: any){
+        const target = event.target;
         
         setFormData({...formData,
-                        [name]:value});
+                        [target.name]:target.value});
     }
     //+---------------------------------------------
     //| monta a lista de categoria
@@ -40,7 +39,7 @@ const Cadastro: React.FC<{}> = (props) =>{
         <ul>
         {categoryCollection.map((collection,index)=>{
             return(
-                <li key={'ID_${index}'}>
+                <li key={`ID_${index}`}>
                     {collection['name']}
                 </li>
             )
@@ -50,39 +49,44 @@ const Cadastro: React.FC<{}> = (props) =>{
     //+---------------------------------------------
     /// exibe listagem de categorias cadastradas.
     //+---------------------------------------------    
-    const showList=(list:any)=>{
+    const showList=()=>{
         return filledList();
     }
     return(
         <>
         <PageDefault1>
-            <h2>Cadastro de Categorias: {formData.name}.</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                <FormField label="Categoria"
-                                type="text"
-                                name="name"
-                                onChange={handleOnChange}/>
+            <div className="content round-5">
+                <div className="item">
+                    <h2>Cadastro de Categorias: {formData.name}.</h2>
                 </div>
-                <div>
-                    <FormField label="descrição"
-                                type="textarea"
-                                name="description"
-                                rows={4}
-                                maxLength={300}
-                                onChange={handleOnChange}
-                            />
-                </div>
-                <div>
-                <FormField label="Cor &nbsp;"
-                                type="color"
-                                name="color"
-                                onChange={handleOnChange}/>
-                </div>
-                <input type="submit" value="Salvar" />
-            </form>
-            {showList(categoryCollection)}
-
+                <form onSubmit={handleSubmit}>
+                    <div className="item">
+                    <FormField label="Categoria"
+                                    type="text"
+                                    name="name"
+                                    onChange={handleOnChange}/>
+                    </div>
+                    <div className="item">
+                        <FormField label="descrição"
+                                    type="textarea"
+                                    name="description"
+                                    rows={4}
+                                    maxLength={300}
+                                    onChange={handleOnChange}
+                                />
+                    </div>
+                    <div className="item">
+                    <FormField label="Cor &nbsp;"
+                                    type="color"
+                                    name="color"
+                                    onChange={handleOnChange}/>
+                    </div>
+                    <div className="item">
+                        <input type="submit" value="Salvar" />
+                    </div>
+                </form>
+                {showList()}
+            </div>
         </PageDefault1>
         </>
     );

@@ -1,0 +1,90 @@
+div.form-field{
+    display:flex;
+    position: relative;
+    padding-top: 5px;
+    margin: 18px 5px;
+}
+div.form-field input,textarea {
+    display: flex;
+    background-color: #282a2c;
+    color: #F5F5F5;
+    width: 100%;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 3px;
+    padding: 8px 25px;
+    outline:none;
+    margin: 5px 8px;
+    transition: all 0.3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+div.form-field input:focus:not([type="submit"]),
+textarea:focus{
+    box-sizing: border-box;
+    border-bottom: 2px solid rgb(50,50,200 );
+    box-shadow: 0px -8px 5px -5px rgba(81,203,238,0.8) inset;
+}
+
+div.form-field input::placeholder,
+textarea::placeholder{
+    color:transparent;
+}
+
+div.form-field label{
+    pointer-events: none;
+    position: absolute;
+    top:2px;
+    left:10px;
+    margin-top:14px;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    box-sizing: border-box;
+}
+
+div.form-field input:required:invalid + label,
+textarea:required:invalid + label{
+    color:rgb(246, 255, 115);
+}
+div.form-field input:focus:required:invalid,
+textarea.focus:required:invalid{
+    box-shadow: 0px 0px 5px rgba(255, 208, 0, 0.849);
+}
+div.form-field input:required:invalid + label:before
+{
+    content: '*';
+}
+
+div.form-field input:focus + label,
+input:valid + label
+{
+    font-size:13px;
+    margin-left:-12px;
+    margin-top: -12px;
+    color: #3951b2;
+}
+
+/*
+        efeitos fora do label flutuante
+*/
+div.form-field input[type="color"] {
+    padding-left: 56px;
+}
+div.form-field input[type="submit"]{
+    display:inline-block;
+    border-radius: 8px;
+    background-color: var(--primary);
+    width: 100%;
+}
+/*
+div.form-field textarea {
+    min-height: 150px;
+    border-radius: 15px;
+    padding: 8px 25px;
+}
+
+div.form-field textarea:focus{
+    border-bottom: 2x solid rgb(50,50,200);
+}*/
